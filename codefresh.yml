@@ -7,3 +7,18 @@ steps:
     image-name: codefreshio/yaml-example
     dockerfile: Dockerfile
     tag: ${{CF_BRANCH}}
+
+  inline-composition:
+    type: launch-composition
+    environmentName: 'env-composition-name'
+    composition:
+      version: '2'
+      services:
+        web:
+          image: ${{build-step}}
+        auth:
+            image: beevelop/nginx-basic-auth
+            ports:
+              - "8080:8080"
+            links:
+              - web

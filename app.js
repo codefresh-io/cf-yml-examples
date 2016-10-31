@@ -7,6 +7,6 @@ app.get('/', function(req, res) {
 });
 
 // Listen
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 8080;
 app.listen(port);
 console.log('Listening on localhost:'+ port);
