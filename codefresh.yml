@@ -1,0 +1,20 @@
+version: '1.0'
+
+steps:
+  build-prj:
+    type: build
+    description: UC - push to aws
+    image-name: codefreshio/
+    dockerfile: Dockerfile
+    tag: latest
+
+  push-step:
+    type: push
+    description: Free text description
+    candidate: ${{build-prj}}
+    tag: ${{CF_BRANCH}}
+    registry: ${{AWS_REGISTRY}}
+    credentials:
+      username: ${{AWS_USERNAME}}
+      password: ${{AWS_PASSWORD}}
+    fail-fast: false
