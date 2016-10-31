@@ -3,7 +3,18 @@ version: '1.0'
 steps:
   build-prj:
     type: build
-    description: UC - build step
+    description: UC - environment vars
     image-name: codefreshio/yaml-example
     dockerfile: Dockerfile
     tag: ${{CF_BRANCH}}
+
+  env-step:
+      image: node:latest
+      environment:
+        - TEST=test
+      commands:
+        - node -v
+        - echo custom-env-1:$TEST
+        - echo default-env-2:${{CF_BRANCH}}
+        - echo default-env-3:${{CF_REVISION}}
+        - echo default-env-3:${{CF_SHORT_REVISION}}
