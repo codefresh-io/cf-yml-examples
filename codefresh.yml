@@ -1,7 +1,7 @@
 version: '1.0'
 
 steps:
-  build-prj:
+  build-step:
     type: build
     description: UC - build step
     image-name: codefreshio/yaml-example
