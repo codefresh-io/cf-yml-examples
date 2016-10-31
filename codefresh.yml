@@ -1,9 +1,21 @@
 version: '1.0'
 
 steps:
-  build-prj:
-    type: build
-    description: UC - build step
-    image-name: codefreshio/yaml-example
-    dockerfile: Dockerfile
-    tag: ${{CF_BRANCH}}
+  clone-step:
+      type: git-clone
+      repo: ${{GIT_REPO}}
+      credentials:
+        username: ${{username}}
+        password: ${{password}}
+
+  push-to-stash:
+      image: codefreshio/git-image:latest
+      commands:
+        - git remote set-url origin ${{STASH_URL}}
+        - git remote -v
+        - git checkout ${{REPO_BRANCH}}
+        - git add *
+        - git status
+        - git commit -am "export repo"
+        #- GIT_SSL_NO_VERIFY=true git pull origin master
+        - GIT_SSL_NO_VERIFY=true git push origin master
