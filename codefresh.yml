@@ -7,3 +7,9 @@ steps:
     image-name: codefreshio/yaml-example
     dockerfile: Dockerfile
     tag: ${{CF_BRANCH}}
+
+  unit-test:
+    image: node:latest
+    commands:
+        - npm -v
+        - echo start test
