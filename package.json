@@ -1,12 +1,26 @@
 {
-  "name": "hello-world-express",
-  "description": "Hello World test app",
-  "version": "0.0.1",
-  "scripts": {
-    "start": "node app.js"
-  },
-  "private": true,
-  "dependencies": {
-    "express": "3.x"
-  }
+    "name": "nodejs-mysql",
+    "version": "0.0.1",
+    "scripts": {
+        "start": "node index.js",
+        "test": "gulp lint && gulp unit_test"
+    },
+    "dependencies": {
+        "express": "^4.10.6",
+        "mysql": "^2.5.4"
+    },
+    "devDependencies": {
+        "mocha": "~3.1.2",
+        "supertest": "~2.0.1",
+        "gulp": "^3.9.1",
+        "promisify-es6": "^1.0.1",
+        "gulp-coveralls": "^0.1.4",
+        "gulp-env": "^0.2.0",
+        "gulp-istanbul": "^0.10.4",
+        "gulp-jshint": "^1.11.0",
+        "gulp-mocha-co": "^0.4.1-co.3",
+        "gulp-rimraf": "^0.1.1",
+        "isparta": "^4.0.0",
+        "run-sequence": "^1.1.0"
+    }
 }
