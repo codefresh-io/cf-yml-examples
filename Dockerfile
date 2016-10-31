@@ -1,14 +1,14 @@
 FROM node:latest
 
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+RUN mkdir -p /var/www/api
+WORKDIR /var/www/api
 
-COPY package.json /usr/src/app/
+COPY package.json /var/www/api/
 
 RUN npm install --silent
 RUN npm install -g pm2
 
-COPY . /usr/src/app
+COPY . /var/www/api/
 
 ADD nginx.conf /etc/nginx/
 ADD default /etc/nginx/sites-available/
