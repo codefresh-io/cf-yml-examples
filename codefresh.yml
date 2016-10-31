@@ -7,3 +7,5 @@ steps:
     image-name: codefreshio/yaml-example
     dockerfile: Dockerfile
     tag: ${{CF_BRANCH}}
+    build-arguments:
+        - argument=TEST
