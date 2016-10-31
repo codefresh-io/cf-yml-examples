@@ -19,6 +19,6 @@ steps:
         auth:
             image: beevelop/nginx-basic-auth
             ports:
-              - 8080
+              - 80
             links:
               - web
