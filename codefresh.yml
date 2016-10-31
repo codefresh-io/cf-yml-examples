@@ -7,3 +7,15 @@ steps:
     image-name: codefreshio/yaml-example
     dockerfile: Dockerfile
     tag: ${{CF_BRANCH}}
+
+  integration-test:
+      type: composition
+      composition:
+        version: '2'
+        services:
+          db:
+            image: postgres
+      composition-candidates:
+        test:
+          image: ${{build-prj}}
+          command: npm test
