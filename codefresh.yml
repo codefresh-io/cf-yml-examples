@@ -12,6 +12,6 @@ steps:
     image: node:latest
     commands:
         - >-
-         echo very very long command
-        continuation of this command
+         echo very very long command continuation of this command 12345678 qwerty asdfgh \
+         sdfsdf sdfsdff
         - echo block is finished
