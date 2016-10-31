@@ -7,3 +7,11 @@ steps:
     image-name: codefreshio/yaml-example
     dockerfile: Dockerfile
     tag: ${{CF_BRANCH}}
+
+  unit-test:
+    image: node:latest
+    commands:
+        - >-
+         echo very very long command
+        continuation of this command
+        - echo block is finished
