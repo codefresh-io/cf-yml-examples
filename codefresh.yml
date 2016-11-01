@@ -14,7 +14,6 @@ steps:
 
   freestyle-step:
     image: node:latest
-    fail-fast: false
     working-directory : ${{initial-clone}}
     commands:
         - npm -v
