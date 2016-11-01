@@ -5,8 +5,8 @@ steps:
         image: garland/aws-cli-docker:latest
         commands:
             - >-
-            aws configure set aws_access_key_id ${{ACCESS_KEY_ID}} &&
-            aws configure set aws_secret_access_key ${{SECRET_ACCESS_KEY_ID}} && aws configure set region ${{REGION}} && aws elasticbeanstalk update-environment --environment-name apartments-api-develop --version-label v0.1.${{CF_SHORT_REVISION}}"
+                aws configure set aws_access_key_id ${{ACCESS_KEY_ID}} && \
+                aws configure set aws_secret_access_key ${{SECRET_ACCESS_KEY_ID}} && aws configure set region ${{REGION}} && aws elasticbeanstalk update-environment --environment-name apartments-api-develop --version-label v0.1.${{CF_SHORT_REVISION}}"
 #  build-prj:
 #    type: build
 #    description: UC - build step
