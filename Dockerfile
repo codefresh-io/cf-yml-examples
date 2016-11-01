@@ -13,9 +13,9 @@ COPY . /var/www/api/
 ADD nginx.conf /etc/nginx/
 ADD default /etc/nginx/sites-available/
 
-EXPOSE 8081
+EXPOSE 80
 
-ENV PORT 8081
+ENV PORT 80
 
 #CMD pm2 start app.js
 CMD npm start
