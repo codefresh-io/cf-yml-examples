@@ -1,13 +1,7 @@
-FROM node:latest
+FROM ubuntu:14.04
 
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+COPY docker-entrypoint.sh /
 
-COPY package.json /usr/src/app/
-RUN npm install --silent
-COPY . /usr/src/app
-EXPOSE 3000
+ENTRYPOINT ["/docker-entrypoint.sh"]
 
-ENV PORT 3000
-
-CMD [ "npm", "start" ]
+CMD ["cron"]
