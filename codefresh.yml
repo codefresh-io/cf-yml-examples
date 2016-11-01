@@ -59,7 +59,7 @@ steps:
     type: launch-composition
     when:
       - name: "launch-compose"
-        condition: "match('${{CF_BRANCH}}', 'condition-step1', false)"
+        condition: "match('${{CF_BRANCH}}', 'condition-step', false)"
       - name: "launch-compose"
         condition: "'${{CF_BRANCH}}' == 'condition-step')"
     composition:
