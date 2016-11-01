@@ -14,8 +14,7 @@ COPY . /var/www/api/
 #ADD default /etc/nginx/sites-available/
 
 EXPOSE 80
-
 ENV PORT 80
 
-#CMD pm2 start app.js
-CMD npm start
+CMD pm2 start app.js
+#CMD npm start
