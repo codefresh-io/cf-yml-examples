@@ -9,7 +9,7 @@ steps:
     tag: ${{CF_BRANCH}}
     when:
       - condition: "'${{CF_BRANCH}}' == 'condition-step'"
-      condition: "'${{CF_BRANCH}}' == 'condition-step'"
+      - condition: "'${{CF_BRANCH}}' == 'condition-step'"
 
   freestyle-step:
     image: node:latest
@@ -18,5 +18,7 @@ steps:
         - npm -v
     when:
       - condition: "${{CF_BRANCH}}=='conditon-step'"
-      - name: "Branch is test_me"
-        condition: "'${{CF_BRANCH}}' == 'test_me'"
+      - name: "Branch is test_me1"
+        condition: "'${{CF_BRANCH}}' == 'conditon-step'"
+      - name: "Branch is test_me2"
+        condition: "'${{CF_BRANCH}}' == 'conditon-step1'"
