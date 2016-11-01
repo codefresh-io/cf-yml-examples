@@ -19,7 +19,7 @@ steps:
         auth:
             image: igortimoshenko/docker-nginx-basic-auth:latest
             ports:
-              - 8080
+              - 80
             environment:
               TITLE: "express-angular"
               HOST: "localhost"
