@@ -8,23 +8,29 @@ steps:
     dockerfile: Dockerfile
     tag: ${{CF_BRANCH}}
 
+  build-nginx:
+    type: build
+    image-name: codefreshio/nginx
+    dockerfile: nginx/Dockerfile
+    tag: ${{CF_BRANCH}}
+
   inline-composition:
     type: launch-composition
     environmentName: 'env-composition-name'
     composition:
       version: '2'
       services:
-        web:
+        app:
           image: ${{build-prj}}
         auth:
-            image: igortimoshenko/docker-nginx-basic-auth:latest
+            image: ${{build-nginx}}
             ports:
-              - 80
+              - 3000
             environment:
               TITLE: "express-angular"
               HOST: "localhost"
-              PORT: "80"
+              PORT: "3000"
               USER: "admin"
               PASS: "admin"
             links:
-              - web
+              - app
