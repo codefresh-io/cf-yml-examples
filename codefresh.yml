@@ -7,3 +7,18 @@ steps:
     image-name: codefreshio/yaml-example
     dockerfile: Dockerfile
     tag: ${{CF_BRANCH}}
+    when:
+      - condition: "'${{CF_BRANCH}}' == 'conditional_step'"
+      - condition: "'${{CF_BRANCH}}' == 'conditional_step'"
+      - condition: "sh -c \"'${{CF_BRANCH}}' == 'conditional_step'\""
+
+  freestyle-step:
+    image: node:latest
+    fail-fast: false
+    working-directory : ${{initial-clone}}
+    commands:
+        - npm -v
+    when:
+      - condition: '${{CF_BRANCH}}' == 'conditional_step'
+      - name: "Branch is test_me"
+        condition: "'${{CF_BRANCH}}' == 'test_me'"
