@@ -5,7 +5,7 @@ steps:
         image: garland/aws-cli-docker:latest
         commands:
             - >-
-          sh -c  "[ ${{CF_BRANCH}} == feature/codefresh ] && \
+            sh -c  "[ ${{CF_BRANCH}} == feature/codefresh ] && \
           aws configure set aws_access_key_id ${{ACCESS_KEY_ID}} && \
           aws configure set aws_secret_access_key ${{SECRET_ACCESS_KEY_ID}} && \
           aws configure set region ${{REGION}} && \
