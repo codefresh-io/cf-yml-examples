@@ -17,8 +17,14 @@ steps:
         web:
           image: ${{build-prj}}
         auth:
-            image: beevelop/nginx-basic-auth
+            image: igortimoshenko/docker-nginx-basic-auth:latest
             ports:
-              - 80
+              - 8080
+            environment:
+              TITLE: "express-angular"
+              HOST: "localhost"
+              PORT: "8080"
+              USER: "admin"
+              PASS: "admin"
             links:
               - web
