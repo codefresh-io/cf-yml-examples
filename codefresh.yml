@@ -17,7 +17,7 @@ steps:
     commands:
         - npm -v
     when:
-      - condition: "${{CF_BRANCH}}=='conditon-step'"
+      - condition: "'${{CF_BRANCH}}'=='conditon-step'"
       - name: "Branch is test_me1"
         condition: "'${{CF_BRANCH}}' == 'conditon-step'"
       - name: "Branch is test_me2"
