@@ -19,6 +19,6 @@ steps:
     commands:
         - npm -v
     when:
-      - condition: '${{CF_BRANCH}}' == 'conditional_step'
+      - condition: '${{CF_BRANCH}}'
       - name: "Branch is test_me"
         condition: "'${{CF_BRANCH}}' == 'test_me'"
