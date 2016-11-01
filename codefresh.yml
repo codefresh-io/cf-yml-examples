@@ -28,8 +28,8 @@ steps:
               - 80
             environment:
               TITLE: "express-angular"
-              HOST: "localhost"
-              PORT: "3000"
+#              HOST: "localhost"
+              PORT: "80"
               USER: "admin1"
               PASS: "admin1"
             links:
