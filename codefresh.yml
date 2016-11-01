@@ -50,6 +50,7 @@ steps:
         type: push
         candidate: ${{build-step}}
         tag: ${{CF_BRANCH}}
+        fail-fast: false
         when:
           - name: "123"
             condition: "'${{CF_BRANCH}}' == 'master'"
