@@ -21,4 +21,45 @@ steps:
       - name: "Branch is test_me1"
         condition: "'${{CF_BRANCH}}' == 'condition-step'"
       - name: "Branch is test_me2"
-        condition: "'${{CF_BRANCH}}' == 'condition-step1'"
+        condition: "'${{CF_BRANCH}}' == 'condition-step'"
+
+  composition-step:
+      description: Attempting to run as part of composition.
+      type: composition
+      composition:
+        version: '2'
+        services:
+          app:
+            image: 'advance512demo/demochat:master'
+            ports:
+              - 5000
+            depends_on:
+              - mongo
+          mongo:
+            image: mongo
+      composition-candidates:
+        main:
+          image: nhoag/curl
+          command: bash -c "sleep 20 && curl http://app:5000/" | echo 'works'
+      when:
+        - name: "Verify CONDITION is in branch name"
+          condition: "match('${{CF_BRANCH}}', 'CONDITION', false)"
+
+  push-step:
+        description: Pushing image to Docker hub.
+        type: push
+        candidate: ${{build-step}}
+        tag: ${{CF_BRANCH}}
+        when:
+          - name: "123"
+            condition: "'${{CF_BRANCH}}' == 'master'"
+
+  launch-compose:
+    type: launch-composition
+    composition:
+        version: '2'
+        services:
+          app:
+            image: ${{build-prj}}
+            ports:
+              - 3000
