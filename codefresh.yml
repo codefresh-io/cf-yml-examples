@@ -8,8 +8,8 @@ steps:
     dockerfile: Dockerfile
     tag: ${{CF_BRANCH}}
     when:
-      - condition: "'${{CF_BRANCH}}' == 'condition-step'"
-      - condition: "'${{CF_BRANCH}}' == 'condition-step'"
+      - condition: "'${{CF_BRANCH}}' == 'condition-step1' || '${{CF_BRANCH}}' == '${{CF_BRANCH}}'"
+      - condition: "'${{CF_BRANCH}}' == '${{CF_BRANCH}}'"
 
   freestyle-step:
     image: node:latest
@@ -17,7 +17,7 @@ steps:
     commands:
         - npm -v
     when:
-      - condition: "'${{CF_BRANCH}}'=='conditon-step'"
+      - condition: "'${{CF_BRANCH}}' == 'conditon-step'"
       - name: "Branch is test_me1"
         condition: "'${{CF_BRANCH}}' == 'conditon-step'"
       - name: "Branch is test_me2"
