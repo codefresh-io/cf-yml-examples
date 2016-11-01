@@ -1,4 +1,5 @@
 #!/bin/bash
+echo nginx pre-configure
 
 cp /basic-auth.conf /etc/nginx/conf.d/default.conf
 sed -e "s/Admin/$TITLE/" -i /etc/nginx/conf.d/default.conf

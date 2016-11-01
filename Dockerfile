@@ -10,12 +10,12 @@ RUN npm install -g pm2
 
 COPY . /var/www/api/
 
-ADD nginx.conf /etc/nginx/
-ADD default /etc/nginx/sites-available/
+#ADD nginx.conf /etc/nginx/
+#ADD default /etc/nginx/sites-available/
 
-EXPOSE 3000
+EXPOSE 80
 
-ENV PORT 3000
+ENV PORT 80
 
 #CMD pm2 start app.js
 CMD npm start
