@@ -23,7 +23,7 @@ steps:
             environment:
               TITLE: "express-angular"
               HOST: "localhost"
-              PORT: "8080"
+              PORT: "8081"
               USER: "admin"
               PASS: "admin"
             links:
