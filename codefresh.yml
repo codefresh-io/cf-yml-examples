@@ -9,8 +9,7 @@ steps:
     tag: ${{CF_BRANCH}}
     when:
       - condition: "'${{CF_BRANCH}}' == 'condition-step'"
-      - condition: "'${{CF_BRANCH}}' == 'condition-step'"
-      - condition: "sh -c \"'${{CF_BRANCH}}' == 'condition-step'\""
+      condition: "'${{CF_BRANCH}}' == 'condition-step'"
 
   freestyle-step:
     image: node:latest
