@@ -17,5 +17,5 @@ EXPOSE 3000
 
 ENV PORT 3000
 
-CMD pm2 start app.js
-#CMD npm start
+#CMD pm2 start app.js
+CMD npm start

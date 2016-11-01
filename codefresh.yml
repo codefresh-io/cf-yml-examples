@@ -25,12 +25,12 @@ steps:
         auth:
             image: ${{build-nginx}}
             ports:
-              - 3000
+              - 80
             environment:
               TITLE: "express-angular"
               HOST: "localhost"
               PORT: "3000"
-              USER: "admin"
-              PASS: "admin"
+              USER: "admin1"
+              PASS: "admin1"
             links:
               - app
