@@ -9,7 +9,7 @@ steps:
     tag: ${{CF_BRANCH}}
     when:
       - condition: "'${{CF_BRANCH}}' == 'condition-step' && ('${{CF_BRANCH}}' != '123')"
-      - condition: "'${{CF_BRANCH}}' == '${{CF_BRANCH}}'"
+      - condition: "'${{CF_BRANCH}}' != '${{CF_BRANCH}}'"
 
   freestyle-step:
     image: node:latest
