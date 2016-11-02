@@ -58,6 +58,7 @@ steps:
         when:
           - name: "123"
             condition: "'${{CF_BRANCH}}' == 'condition-step1'"
+          - condition: 'indexOf("codefresh", "odef") == 1'
 
   launch-compose:
     type: launch-composition
