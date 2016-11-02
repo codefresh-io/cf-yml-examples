@@ -10,4 +10,4 @@ RUN apk add --no-cache gettext
 
 COPY nginx/auth.conf nginx/auth.htpasswd nginx/launch.sh ./
 
-CMD ["./launch.sh"]
+CMD ["sh", "./launch.sh"]
