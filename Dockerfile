@@ -10,9 +10,6 @@ RUN npm install -g pm2
 
 COPY . /var/www/api/
 
-#ADD nginx.conf /etc/nginx/
-#ADD default /etc/nginx/sites-available/
-
 EXPOSE 80
 ENV PORT 80
 
