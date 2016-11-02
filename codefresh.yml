@@ -57,7 +57,7 @@ steps:
         fail-fast: true
         when:
           - name: "123"
-            condition: "'${{CF_BRANCH}}' == 'condition-step1'"
+            condition: "'${{CF_BRANCH}}' == 'condition-step'"
           - condition: 'indexOf("codefresh", "odef") == 1'
 
   launch-compose:
