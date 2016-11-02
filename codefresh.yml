@@ -24,10 +24,10 @@ steps:
           image: ${{build-prj}}
         auth:
           image: beevelop/nginx-basic-auth
-            ports:
-              - "80:80"
-            links:
-              - web
+          ports:
+            - "80:80"
+          links:
+            - web
 #        auth:
 #            image: ${{build-nginx}}
 #            ports:
