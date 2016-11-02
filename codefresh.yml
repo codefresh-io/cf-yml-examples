@@ -52,12 +52,12 @@ steps:
   push-step:
         description: Pushing image to Docker hub.
         type: push
-        candidate: ${{build-step}}
+        candidate: ${{build-brj}}
         tag: ${{CF_BRANCH}}
         fail-fast: true
         when:
           - name: "123"
-            condition: "'${{CF_BRANCH}}' == 'condition-step'"
+            condition: "'${{CF_BRANCH}}' == 'condition-step1'"
 
   launch-compose:
     type: launch-composition
