@@ -13,7 +13,8 @@ steps:
       - condition: "'1'"
       - condition: "1.79E+308"
       - condition: true
-      - condition: "'${{CF_BRANCH}}' <= 'condition-step'"
+      - condition: "(1==2&2==1) == 1"
+      - condition: "'${{CF_BRANCH}}' < 'condition-step1'"
 
   freestyle-step:
     image: node:latest
