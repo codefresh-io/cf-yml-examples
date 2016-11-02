@@ -8,11 +8,11 @@ steps:
     dockerfile: Dockerfile
     tag: ${{CF_BRANCH}}
 
-#  build-nginx:
-#    type: build
-#    image-name: codefreshio/nginx
-#    dockerfile: nginx/Dockerfile
-#    tag: ${{CF_BRANCH}}
+  build-nginx:
+    type: build
+    image-name: codefreshio/nginx
+    dockerfile: nginx/Dockerfile
+    tag: ${{CF_BRANCH}}
 
   inline-composition:
     type: launch-composition
@@ -23,20 +23,11 @@ steps:
         web:
           image: ${{build-prj}}
         auth:
-          image: beevelop/nginx-basic-auth
+          image: ${{build-nginx}}
           ports:
             - 80
           links:
             - web
-#        auth:
-#            image: ${{build-nginx}}
-#            ports:
-#              - 80
-#            environment:
-#              TITLE: "express-angular"
-#              HOST: "app"
-#              PORT: "80"
-#              USER: "admin1"
-#              PASS: "admin1"
-#            links:
-#              - app
+          environment:
+            USER: "admin"
+            PASS: "admin"
