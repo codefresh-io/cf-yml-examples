@@ -54,10 +54,10 @@ steps:
         type: push
         candidate: ${{build-step}}
         tag: ${{CF_BRANCH}}
-        fail-fast: false
+        fail-fast: true
         when:
           - name: "123"
-            condition: "'${{CF_BRANCH}}' == 'master'"
+            condition: "'${{CF_BRANCH}}' == 'condition-step'"
 
   launch-compose:
     type: launch-composition
