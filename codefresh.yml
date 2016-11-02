@@ -9,7 +9,7 @@ steps:
     tag: ${{CF_BRANCH}}
     when:
       - condition: "'${{CF_BRANCH}}' == 'condition-step' && ('${{CF_BRANCH}}' != '123')"
-      - condition: "0"
+      - condition: "1"
       - condition: "''"
       - condition: "1.79E+308"
       - condition:
