@@ -61,7 +61,7 @@ steps:
       - name: "launch-compose"
         condition: "match('${{CF_BRANCH}}', 'condition-step', false)"
       - name: "launch-compose"
-        condition: "'${{CF_BRANCH}}' == 'condition-step')"
+        condition: "'${{CF_BRANCH}}' == 'condition-step'"
     composition:
         version: '2'
         services:
