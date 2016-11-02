@@ -11,7 +11,7 @@ ENV FORWARD_PORT=80
 
 WORKDIR /opt
 
-RUN apk add --no-cache gettext
+#RUN apk add --no-cache gettext
 
 COPY nginx/auth.conf nginx/auth.htpasswd nginx/launch.sh ./
 
