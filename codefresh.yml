@@ -20,8 +20,8 @@ steps:
       - condition: "'${{CF_BRANCH}}' == 'condition-step'"
       - name: "Branch is test_me1"
         condition: "'${{CF_BRANCH}}' == 'condition-step'"
-      - name: "Branch is test_me2"
-        condition: "'${{CF_BRANCH}}' == 'condition-step'"
+      - name: "Verify CONDITION is in branch name"
+        condition: "match('${{CF_BRANCH}}', 'CONDITION', false)"
 
   composition-step:
       description: Attempting to run as part of composition.
