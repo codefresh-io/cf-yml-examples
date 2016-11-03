@@ -21,6 +21,7 @@ steps:
     working-directory: ${{initial-clone}}
     commands:
       - npm install
+      - echo start snyk test
       - snyk auth $SNYK_TOKEN
       - snyk test
     environment:
