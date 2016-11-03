@@ -8,3 +8,11 @@ steps:
     image-name: codefreshio/yaml-example
     dockerfile: Dockerfile
     tag: ${{CF_BRANCH}}
+
+  snyk-test:
+    image: node:latest
+    working-directory: ${{build-prj}}
+    commands:
+      - npm install -g snyk
+      - snyk auth ${{AUTH_TOKEN}}
+      - snyk test
