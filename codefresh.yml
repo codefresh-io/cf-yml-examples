@@ -22,6 +22,7 @@ steps:
     commands:
       - echo "start snyk wizard"
       - ls -l
+      - ls -l /usr/src/app
       - snyk auth $SNYK_TOKEN
       - snyk wizard
     environment:
