@@ -21,4 +21,4 @@ steps:
     commands:
       - snyk test
     environment:
-      SNYK_TOKEN: ${{AUTH_TOKEN}}
+      - SNYK_TOKEN=${{AUTH_TOKEN}}
