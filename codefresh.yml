@@ -56,8 +56,8 @@ steps:
         tag: ${{CF_BRANCH}}
         fail-fast: true
         when:
-          - name: "123"
-            condition: "'${{CF_BRANCH}}' == 'condition-step'"
+          - name: "Verify CONDITION is in branch name"
+            condition: "match('${{CF_BRANCH}}', 'CONDITION', false)"
           - condition: 'indexOf("codefresh", "odef") == 1'
 
   launch-compose:
