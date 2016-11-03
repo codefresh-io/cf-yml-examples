@@ -22,6 +22,6 @@ steps:
     commands:
       - npm install
       - snyk auth $SNYK_TOKEN
-      - snyk wizard
+      - snyk test
     environment:
       - SNYK_TOKEN=${{AUTH_TOKEN}}
