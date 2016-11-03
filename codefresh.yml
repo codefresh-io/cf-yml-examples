@@ -20,9 +20,7 @@ steps:
     image: ${{build-snyk}}
     working-directory: ${{initial-clone}}
     commands:
-      - echo "start snyk wizard"
-      - ls -l
-      - ls -l /usr/src/app
+      - npm install
       - snyk auth $SNYK_TOKEN
       - snyk wizard
     environment:
