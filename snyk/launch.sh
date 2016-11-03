@@ -1,3 +1,5 @@
 #!/bin/sh
 
-snyk auth $SNYK_TOKEN
+echo snyk token=$ENV_SNYK_TOKEN
+
+snyk auth $ENV_SNYK_TOKEN
