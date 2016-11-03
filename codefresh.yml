@@ -9,10 +9,16 @@ steps:
     dockerfile: Dockerfile
     tag: ${{CF_BRANCH}}
 
+  build-snyk:
+    type: build
+    image-name: codefreshio/snyk
+    dockerfile: snyk/Dockerfile
+    tag: latest
+
   snyk-test:
-    image: node:latest
-    working-directory: ${{initial-clone}}
+    image: ${{build-snyk}}
+    working-directory: ${{build-prj}}
     commands:
-      - npm install -g snyk
-      - snyk auth ${{AUTH_TOKEN}}
       - snyk test
+    environment:
+      SNYK_TOKEN: ${{AUTH_TOKEN}}
