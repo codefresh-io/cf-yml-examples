@@ -5,6 +5,7 @@ steps:
   build-prj:
     type: build
     description: UC - build step
+    working-directory: ${{initial-clone}}
     image-name: codefreshio/yaml-example
     dockerfile: Dockerfile
     tag: ${{CF_BRANCH}}
@@ -17,9 +18,9 @@ steps:
 
   snyk-test:
     image: ${{build-snyk}}
-    working-directory: ${{build-prj}}
+    working-directory: ${{initial-clone}}
     commands:
       - npm install
-      - snyk test
+      - snyk wizard
     environment:
       - SNYK_TOKEN=${{AUTH_TOKEN}}
