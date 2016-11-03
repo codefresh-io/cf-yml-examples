@@ -19,6 +19,7 @@ steps:
   snyk-test:
     image: ${{build-snyk}}
     working-directory: ${{initial-clone}}
+    fail-fast: false
     commands:
       - npm install
       - echo start snyk test
