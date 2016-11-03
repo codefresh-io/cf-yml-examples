@@ -11,7 +11,7 @@ steps:
 
   snyk-test:
     image: node:latest
-    working-directory: ${{build-prj}}
+    working-directory: ${{initial-clone}}
     commands:
       - npm install -g snyk
       - snyk auth ${{AUTH_TOKEN}}
