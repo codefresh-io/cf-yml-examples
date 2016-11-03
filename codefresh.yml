@@ -21,6 +21,7 @@ steps:
     working-directory: ${{initial-clone}}
     commands:
       - echo "start snyk wizard"
+#      - snyk auth $SNYK_TOKEN
       - snyk wizard
     environment:
       - SNYK_TOKEN=${{AUTH_TOKEN}}

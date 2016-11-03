@@ -2,8 +2,6 @@ FROM node:latest
 
 RUN npm install -g snyk
 
-ENV ENV_SNYK_TOKEN=$SNYK_TOKEN
+RUN echo token $SNYK_TOKEN
 
-COPY snyk/launch.sh ./
-
-CMD ["./launch.sh"]
+RUN snyk auth $SNYK_TOKEN
