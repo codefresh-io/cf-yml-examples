@@ -19,6 +19,7 @@ steps:
     image: ${{build-snyk}}
     working-directory: ${{build-prj}}
     commands:
+      - npm install
       - snyk test
     environment:
       - SNYK_TOKEN=${{AUTH_TOKEN}}
