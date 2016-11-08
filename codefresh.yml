@@ -56,7 +56,7 @@ steps:
         type: push
         candidate: ${{build-prj}}
         tag: ${{CF_BRANCH}}
-        fail-fast: true
+        fail-fast: false
         when:
           branch:
             ignore:
