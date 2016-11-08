@@ -8,12 +8,9 @@ steps:
     dockerfile: Dockerfile
     tag: ${{CF_BRANCH}}
     when:
-      - condition: "'${{CF_BRANCH}}' == 'condition-step' && ('${{CF_BRANCH}}' != '123')"
-      - condition: "1"
-      - condition: "'1'"
-      - condition: "1.79E+308"
-      - condition: true
-      - condition: "'${{CF_BRANCH}}' < 'condition-step1'"
+      branch:
+        only:
+          - master
 
   freestyle-step:
     image: node:latest
