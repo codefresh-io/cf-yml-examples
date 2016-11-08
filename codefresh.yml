@@ -13,7 +13,7 @@ steps:
           - master
           - /^FB-.*/i
         ignore:
-          - condition-step
+          - condition-step2
 
   freestyle-step:
     image: node:latest
