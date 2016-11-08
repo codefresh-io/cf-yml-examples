@@ -11,6 +11,9 @@ steps:
       branch:
         only:
           - master
+          - /^FB-.*/i
+        ignore:
+          - condition-step
 
   freestyle-step:
     image: node:latest
@@ -18,11 +21,11 @@ steps:
     commands:
         - npm -v
     when:
-      - condition: "'${{CF_BRANCH}}' == 'condition-step'"
-      - name: "Branch is test_me1"
-        condition: "'${{CF_BRANCH}}' == 'condition-step'"
-      - name: "Verify CONDITION is in branch name"
-        condition: "match('${{CF_BRANCH}}', 'CONDITION', false)"
+      condition:
+        all:
+          name: "'${{CF_BRANCH}}' == 'condition-step'"
+          noSkipCiInCommitMessage: 'includes(lower("${{CF_COMMIT_MESSAGE}}"), "skip ci") == false'
+          masterBranch: '"${{CF_BRANCH}}" == "master"'
 
   composition-step:
       description: Attempting to run as part of composition.
@@ -43,8 +46,10 @@ steps:
           image: nhoag/curl
           command: bash -c "sleep 20 && curl http://app:5000/" | echo 'works'
       when:
-        - name: "Verify CONDITION is in branch name"
-          condition: "match('${{CF_BRANCH}}', 'CONDITION', false)"
+        condition:
+          any:
+            noSkipCiInCommitMessage: 'includes(lower("${{CF_COMMIT_MESSAGE}}"), "skip ci") == false'
+            notFeatureBranch: 'match("${{CF_BRANCH}}", "^FB-", true) == false'
 
   push-step:
         description: Pushing image to Docker hub.
@@ -53,17 +58,16 @@ steps:
         tag: ${{CF_BRANCH}}
         fail-fast: true
         when:
-          - name: "Verify CONDITION is in branch name"
-            condition: "match('${{CF_BRANCH}}', 'CONDITION', false)"
-          - condition: 'indexOf("codefresh", "odef") == 1'
+          branch:
+            ignore:
+              - master
+              - develop
 
   launch-compose:
     type: launch-composition
     when:
-      - name: "launch-compose"
-        condition: "match('${{CF_BRANCH}}', 'condition-step', false)"
-      - name: "launch-compose"
-        condition: "'${{CF_BRANCH}}' == 'condition-step'"
+      branch:
+        ignore: [ master, other]
     composition:
         version: '2'
         services:
