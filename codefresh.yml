@@ -1,10 +1,10 @@
 version: '1.0'
 
 steps:
-  build-prj:
+  build_prj:
     type: build
     description: UC - build step
-    image-name: codefreshio/yaml-example
+    image_name: codefreshio/yaml-example
     dockerfile: Dockerfile
     tag: ${{CF_BRANCH}}
     when:
@@ -14,9 +14,9 @@ steps:
         ignore:
           - condition-step2
 
-  freestyle-step:
+  freestyle_step:
     image: node:latest
-    working-directory : ${{initial-clone}}
+    working_directory : ${{initial_clone}}
     commands:
         - npm -v
     when:
@@ -26,7 +26,7 @@ steps:
           noSkipCiInCommitMessage: 'includes(lower("${{CF_COMMIT_MESSAGE}}"), "skip ci") == false'
           masterBranch: '"${{CF_BRANCH}}" == "master"'
 
-  composition-step:
+  composition_step:
       description: Attempting to run as part of composition.
       type: composition
       composition:
@@ -40,7 +40,7 @@ steps:
               - mongo
           mongo:
             image: mongo
-      composition-candidates:
+      composition_candidates:
         main:
           image: nhoag/curl
           command: bash -c "sleep 20 && curl http://app:5000/" | echo 'works'
@@ -50,7 +50,7 @@ steps:
             noSkipCiInCommitMessage: 'includes(lower("${{CF_COMMIT_MESSAGE}}"), "skip ci") == false'
             notFeatureBranch: 'match("${{CF_BRANCH}}", "^FB-", true) == false'
 
-  push-step:
+  push_step:
         description: Pushing image to Docker hub.
         type: push
         candidate: ${{build-prj}}
@@ -62,7 +62,7 @@ steps:
               - master
               - develop
 
-  launch-compose:
+  launch_compose:
     type: launch-composition
     when:
       branch:
