@@ -4,7 +4,7 @@ steps:
   build_prj:
     type: build
     description: UC - build step
-    image_name: codefreshio/yaml-example
+    image-name: codefreshio/yaml-example
     dockerfile: Dockerfile
     tag: ${{CF_BRANCH}}
     when:
@@ -16,7 +16,7 @@ steps:
 
   freestyle_step:
     image: node:latest
-    working_directory : ${{initial_clone}}
+    working-directory: ${{initial_clone}}
     commands:
         - npm -v
     when:
@@ -40,7 +40,7 @@ steps:
               - mongo
           mongo:
             image: mongo
-      composition_candidates:
+      composition-candidates:
         main:
           image: nhoag/curl
           command: bash -c "sleep 20 && curl http://app:5000/" | echo 'works'
@@ -58,9 +58,7 @@ steps:
         fail-fast: false
         when:
           branch:
-            ignore:
-              - master
-              - develop
+            ignore: [master, develop]
 
   launch_compose:
     type: launch-composition
@@ -73,4 +71,4 @@ steps:
           app:
             image: ${{build-prj}}
             ports:
-              - 3000
+              - 3000:5000
