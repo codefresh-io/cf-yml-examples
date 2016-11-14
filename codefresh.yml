@@ -51,14 +51,14 @@ steps:
             notFeatureBranch: 'match("${{CF_BRANCH}}", "^FB-", true) == false'
 
   push_step:
-        description: Pushing image to Docker hub.
-        type: push
-        candidate: ${{build-prj}}
-        tag: ${{CF_BRANCH}}
-        fail-fast: false
-        when:
-          branch:
-            ignore: [master, develop]
+    description: Pushing image to Docker hub.
+    type: push
+    candidate: ${{build_prj}}
+    tag: ${{CF_BRANCH}}
+    fail-fast: false
+    when:
+      branch:
+        ignore: [master, develop]
 
   launch_compose:
     type: launch-composition
