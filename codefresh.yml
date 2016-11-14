@@ -16,7 +16,7 @@ steps:
 
   freestyle_step:
     image: node:latest
-    working-directory: ${{initial_clone}}
+    working-directory: ${{initial-clone}}
     commands:
         - npm -v
     when:
@@ -71,4 +71,4 @@ steps:
           app:
             image: ${{build-prj}}
             ports:
-              - 3000:5000
+              - 3000
