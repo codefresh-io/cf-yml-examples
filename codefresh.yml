@@ -4,7 +4,7 @@ steps:
   build-prj:
     type: build
     description: UC - push to aws
-    image-name: codefreshio/
+    image-name: codefreshio/test
     dockerfile: Dockerfile
     tag: latest
 
@@ -18,3 +18,15 @@ steps:
       username: ${{AWS_USERNAME}}
       password: ${{AWS_PASSWORD}}
     fail-fast: false
+
+#  deploy to ecs:
+#     image: codefresh/cf-deploy-ecs
+#     commands:
+#       - cfecs-update --image-name codefreshio/test --image-tag ${{CF_BRANCH}} eu-west-1 demochat-production demochat-service
+#     environment:
+#       - AWS_ACCESS_KEY_ID=${{AWS_ACCESS_KEY_ID}}
+#       - AWS_SECRET_ACCESS_KEY=${{AWS_SECRET_ACCESS_KEY}}
+#     when:
+#      branch:
+#        only:
+#          - staging
