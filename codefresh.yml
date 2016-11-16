@@ -1,10 +1,16 @@
 version: '1.0'
 
 steps:
+  clone-a-repo:
+    type: git-clone
+    description: Step description
+    repo: github.com/codefresh-io/cf-special-yml-example
+    revision: 8435dc86001eda8c8b0d39551a6710334bb98a3f
 
-  build-prj:
+  build-another-prj:
     type: build
     description: UC - build step
-    image-name: codefreshio/yaml-example
+    working-directory: ${{clone-a-repo}}
+    image-name: codefreshio/yaml-example-1
     dockerfile: Dockerfile
     tag: ${{CF_BRANCH}}
