@@ -8,3 +8,8 @@ steps:
     image-name: codefreshio/yaml-example
     dockerfile: Dockerfile
     tag: ${{CF_BRANCH}}
+
+  push-to-docker-registry:
+    type: push
+    candidate: ${{build-prj}}
+    tag: ${{CF_BRANCH}}
