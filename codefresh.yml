@@ -6,5 +6,5 @@ steps:
     type: build
     description: UC - build step
     image-name: codefreshio/yaml-example
-    dockerfile: Dockerfile
+    dockerfile: docker/Dockerfile
     tag: ${{CF_BRANCH}}
