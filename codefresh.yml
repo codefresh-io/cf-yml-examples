@@ -4,7 +4,7 @@ steps:
   clone-a-repo:
     type: git-clone
     description: Step description
-    repo: github.com/codefresh-io/cf-special-yml-example.git
+    repo: https://github.com/codefresh-io/cf-special-yml-example.git
     revision: 8435dc86001eda8c8b0d39551a6710334bb98a3f
 
   build-another-prj:
