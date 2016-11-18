@@ -9,21 +9,21 @@ steps:
     tag: ${{CF_BRANCH}}
 
   step-file-generation:
-      type: composition
-      composition:
-        service1:
-          volumes:
-            - ${{CF_VOLUME}}:/codefresh/volume
-          image: ${{build-step}}
-          command: bash -c "echo hello > /codefresh/volume/myfile.txt"
-      composition-candidates:
-        test:
-          image: ${{build-step}}
-          command: echo hello
+    type: composition
+    composition:
+      service1:
+        volumes:
+          - ${{CF_VOLUME}}:/codefresh/volume
+        image: ${{build-step}}
+        command: bash -c "echo hello > /codefresh/volume/myfile.txt"
+    composition-candidates:
+      test:
+        image: ${{build-step}}
+        command: echo hello
 
   use previous file:
-      image: alpine:latest
-      working-directory: ${{initial-clone}}
-      commands:
-        - echo using previous file. printing its content
-        - cat /codefresh/volume/myfile.txt
+    image: alpine:latest
+    working-directory: ${{initial-clone}}
+    commands:
+      - echo using previous file. printing its content
+      - cat /codefresh/volume/myfile.txt
