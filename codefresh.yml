@@ -11,7 +11,7 @@ steps:
   step-file-generation:
     type: composition
     composition:
-      service1:
+      service-name:
         volumes:
           - ${{CF_VOLUME}}:/codefresh/volume
         image: ${{build-step}}
@@ -25,5 +25,6 @@ steps:
     image: alpine:latest
     working-directory: ${{initial-clone}}
     commands:
+      - ls
       - echo using previous file. printing its content
       - cat /codefresh/volume/myfile.txt
