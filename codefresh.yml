@@ -2,31 +2,23 @@ version: '1.0'
 
 steps:
 
-  build-prj:
+  build_prj:
     type: build
     description: UC - build step
-    image-name: codefreshio/yaml-example
+    image_name: codefreshio/yaml-example
     dockerfile: Dockerfile
     tag: ${{CF_BRANCH}}
 
   unit_tests:
-    image: ${{build_jjwt}}
-    working_directory: ${{initial-clone}}
+    image: ${{build_prj}}
+    working_directory: ${{initial_clone}}
     fail-fast: false
     commands:
-      - echo $(date)
-      - env
-      - ls .
-      - echo "WHAT IS GOING ON!"
-      - echo foo > foo.txt
-      - echo After creation of file
-      - ls .
-      - echo $PWD
+      - cp artifact/artifact.example ./artifact.example
 
-  validateFoo:
-     image: ${{build_jjwt}}
-     working-directory: ${{initial-clone}}
+  validate:
+     image: ${{build_prj}}
+     working_directory: ${{initial_clone}}
      commands:
         - pwd
         - ls
-        - cat foo.txt
