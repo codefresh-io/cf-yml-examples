@@ -9,7 +9,7 @@ steps:
     dockerfile: Dockerfile
     tag: ${{CF_BRANCH}}
 
-  unit_tests:
+  freestyle_step:
     image: ${{build_prj}}
     working_directory: ${{initial_clone}}
     fail-fast: false
