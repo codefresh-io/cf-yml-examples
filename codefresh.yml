@@ -6,7 +6,7 @@ steps:
     description: UC - build step
     image-name: codefreshio/yaml-example
     dockerfile: Dockerfile
-    tag: ${{CF-BRANCH}}
+    tag: ${{CF_BRANCH}}
     when:
      branch:
         only:
@@ -30,17 +30,17 @@ steps:
       description: Attempting to run as part of composition.
       type: composition
       composition:
-        version: '2'
-        services:
-          app:
-            image: 'advance512demo/demochat:master'
-            ports:
-              - 5000
-            depends_on:
-              - mongo
-          mongo:
-            image: mongo
-      compositioncandidates:
+#        version: '2'
+#        services:
+#          app:
+#            image: 'advance512demo/demochat:master'
+#            ports:
+#              - 5000
+#            depends_on:
+#              - mongo
+#          mongo:
+#            image: mongo
+      composition-candidates:
         main:
           image: nhoag/curl
           command: bash -c "sleep 20 && curl http://app:5000/" | echo 'works'
