@@ -9,7 +9,7 @@ steps:
     tag: ${{CF_BRANCH}}
     when:
      branch:
-     only:
+        only:
           - condition-step
         ignore:
           - condition-step2
