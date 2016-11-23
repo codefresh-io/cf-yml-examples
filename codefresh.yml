@@ -4,9 +4,9 @@ steps:
   build_prj:
     type: build
     description: UC - build step
-    imagename: codefreshio/yaml-example
+    image-name: codefreshio/yaml-example
     dockerfile: Dockerfile
-    tag: ${{CF_BRANCH}}
+    tag: ${{CF-BRANCH}}
     when:
      branch:
         only:
