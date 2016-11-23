@@ -8,7 +8,7 @@ steps:
     dockerfile: Dockerfile
     tag: ${{CF_BRANCH}}
     when:
-      branch:
+    branch:
         only:
           - condition-step
         ignore:
@@ -40,7 +40,7 @@ steps:
               - mongo
           mongo:
             image: mongo
-      composition-candidates:
+      compositioncandidates:
         main:
           image: nhoag/curl
           command: bash -c "sleep 20 && curl http://app:5000/" | echo 'works'
