@@ -69,6 +69,6 @@ steps:
         version: '2'
         services:
           app:
-            image: ${{build-prj}}
+            image: ${{build_prj}}
             ports:
               - 3000
