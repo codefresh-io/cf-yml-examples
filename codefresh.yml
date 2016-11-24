@@ -8,14 +8,14 @@ steps:
 
     check_env_file:
       image: node:latest
-      working_directory: ${{initial_clone}}
+      working_directory: ${{initial-clone}}
       commands:
         - pwd
         - ls .
 
     check_env_file_:
       type: composition
-      working_directory: ${{initial_clone}}
+      working_directory: ${{initial-clone}}
       composition:
         version: '2'
         services:
