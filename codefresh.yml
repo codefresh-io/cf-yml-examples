@@ -31,7 +31,7 @@ steps:
       composition_candidates:
           test:
             image: ${{build_step}}
-            command: bash -c 'pwd'
+            command: bash -c 'echo test:$MYSQL_ROOT_PASSWORD'
             env_file: /usr/src/app/mysql.env
 
 
