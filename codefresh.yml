@@ -7,7 +7,7 @@ steps:
     image-name: codefreshio/yaml-example
     dockerfile: Dockerfile
     tag: ${{CF_BRANCH}}
-#    title:sd
+    title:sd
     when:
      branch:
         only:
