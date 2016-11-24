@@ -1,27 +1,27 @@
 version: '1.0'
 steps:
-  build_prj1:
-    type: build
-    image_name: qwerty
-    fail-fast: true
-
-  build_prj:
-      type: build
-      description: UC - build step
-      image_name: codefreshio/yaml-example
-      dockerfile: Dockerfile
-      tag: ${{CF_BRANCH}}
-      when:
-       branch:
-          only:
-            - test
-            - condition-step
-          ignore:
-            - condition-step2
+#  build_prj1:
+#    type: build
+#    image_name: qwerty
+#    fail-fast: true
+#
+#  build_prj:
+#      type: build
+#      description: UC - build step
+#      image_name: codefreshio/yaml-example
+#      dockerfile: Dockerfile
+#      tag: ${{CF_BRANCH}}
+#      when:
+#       branch:
+#          only:
+#            - test
+#            - condition-step
+#          ignore:
+#            - condition-step2
 
   freestyle_step:
       image: node:latest
-      working-directory: ${{initial--clone}}
+      working-directory: ${{initial-clone}}
       commands:
           - >-
             awerty dfgdfgdfgdf
