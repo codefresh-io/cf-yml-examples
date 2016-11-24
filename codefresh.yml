@@ -37,7 +37,7 @@ steps:
           test:
             image: node:latest
             command: bash -c 'ls -l && cd /codefresh && ls -l && echo test:$MYSQL_ROOT_PASSWORD'
-            env_file: /codefresh/volume/cf-yml-examples/mysql.env
+#            env_file: /codefresh/volume/cf-yml-examples/mysql.env
 
 
 #    unit_test:
