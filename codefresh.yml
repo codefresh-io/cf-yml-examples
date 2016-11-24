@@ -30,7 +30,7 @@ steps:
               MYSQL_DATABASE: nodejs
       composition_candidates:
           test:
-            image: node:lates
+            image: node:latest
             command: bash -c 'pwd && echo test:$MYSQL_ROOT_PASSWORD'
 #            env_file: /codefresh/volume/cf-yml-examples/mysql.env
 
