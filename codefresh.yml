@@ -10,12 +10,13 @@ steps:
       type: composition
       composition:
         version: '2'
-        service-name:
-          volumes:
-            - ${{CF_VOLUME}}:/codefresh/volume
-          image: ${{build-step}}
-          command: bash -c "ls -l && cd /codefresh && ls -l && echo test:$MYSQL_ROOT_PASSWORD"
-          env_file: /codefresh/volume/cf-yml-examples/mysql.env
+        services:
+          service-name:
+            volumes:
+              - ${{CF_VOLUME}}:/codefresh/volume
+            image: ${{build-step}}
+            command: bash -c "ls -l && cd /codefresh && ls -l && echo test:$MYSQL_ROOT_PASSWORD"
+            env_file: /codefresh/volume/cf-yml-examples/mysql.env
         volumes:
           ${{CF_VOLUME}}:
             external: true
