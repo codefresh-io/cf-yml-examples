@@ -1,7 +1,9 @@
 version: '1.0'
 steps:
-  build_prj:
-    image: node:latest
+  build_prj1:
+    type: build
+    image_name: qwerty
+    fail-fast: true
 
   build_prj:
       type: build
@@ -25,12 +27,8 @@ steps:
             awerty dfgdfgdfgdf
             sdfsdfsdf
           - npm -v
-      when:
-        condition:
-          all:
-            name: "'${{CF_BRANCH}}' == 'condition-step'"
-            noSkipCiInCommitMessage: 'includes(lower("${{CF_COMMIT_MESSAGE}}"), "skip ci") == false'
-            masterBranch: '"${{CF_BRANCH}}" == "master"'
+      environments:
+
 
   composition_step:
         description: Attempting to run as part of composition.
