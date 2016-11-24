@@ -1,63 +1,46 @@
 version: '1.0'
 steps:
-    build_step:
+    build-step:
       type: build
       image_name: codefreshio/yaml-example
       dockerfile: Dockerfile
       tag: ${{CF_BRANCH}}
 
-#    check_env_file:
-#      image: node:latest
-#      working_directory: ${{main_clone}}
-#      commands:
-#        - pwd
-#        - ls .
-
-    check_env_file_:
+    step-file-generation:
       type: composition
-      working_directory: ${{main_clone}}
       composition:
-        version: '2'
-        services:
-          db:
-            image: mysql:latest
-            volumes:
-              - ${{CF_VOLUME}}:/codefresh/volume
-            ports:
-              - 3306
-            environment:
-              MYSQL_ROOT_PASSWORD: admin
-              MYSQL_USER: my_user
-              MYSQL_PASSWORD: admin
-              MYSQL_DATABASE: nodejs
-        volumes:
-          ${{CF_VOLUME}}:
-            external: true
-      composition_candidates:
-          test:
-            image: node:latest
-            command: bash -c 'ls -l && cd /codefresh && ls -l && echo test:$MYSQL_ROOT_PASSWORD'
-#            env_file: /codefresh/volume/cf-yml-examples/mysql.env
+        service-name:
+          volumes:
+            - ${{CF_VOLUME}}:/codefresh/volume
+          image: ${{build-step}}
+          command: bash -c "ls -l && cd /codefresh && ls -l && echo test:$MYSQL_ROOT_PASSWORD"
+      composition-candidates:
+        test:
+          image: ${{build-step}}
+          command: echo hello
 
-
-#    unit_test:
+#    check_env_file_:
 #      type: composition
-#      working_directory: ${{initial-clone}}
+#      working_directory: ${{main_clone}}
 #      composition:
-#          version: '2'
-#          services:
-#            db:
-#              image: mysql:latest
-#              ports:
-#                - 3306
-#              env_file: /codefresh/volume/cf-yml-examples/mysql.env
-#
-##              environment:
-##                MYSQL_ROOT_PASSWORD: admin
-##                MYSQL_USER: my_user
-##                MYSQL_PASSWORD: admin
-##                MYSQL_DATABASE: nodejs
+#        version: '2'
+#        services:
+#          db:
+#            image: mysql:latest
+#            volumes:
+#              - ${{CF_VOLUME}}:/codefresh/volume
+#            ports:
+#              - 3306
+#            environment:
+#              MYSQL_ROOT_PASSWORD: admin
+#              MYSQL_USER: my_user
+#              MYSQL_PASSWORD: admin
+#              MYSQL_DATABASE: nodejs
+#        volumes:
+#          ${{CF_VOLUME}}:
+#            external: true
 #      composition_candidates:
 #          test:
-#            image: ${{build-step}}
-#            command: bash -c 'sleep 30 && MYSQL_ROOT_PASSWORD=admin MYSQL_USER=my_user MYSQL_HOST=db MYSQL_PASSWORD=admin MYSQL_DATABASE=nodejs npm test'
+#            image: node:latest
+#            command: bash -c 'ls -l && cd /codefresh && ls -l && echo test:$MYSQL_ROOT_PASSWORD'
+##            env_file: /codefresh/volume/cf-yml-examples/mysql.env
