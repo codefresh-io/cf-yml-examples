@@ -18,7 +18,8 @@ steps:
     image: node:latest
     working-directory: ${{initial-clone}}
     commands:
-        - >- awerty dfgdfgdfgdf
+        - >-
+         awerty dfgdfgdfgdf
           sdfsdfsdf
         - npm -v
     when:
@@ -27,7 +28,6 @@ steps:
           name: "'${{CF_BRANCH}}' == 'condition-step'"
           noSkipCiInCommitMessage: 'includes(lower("${{CF_COMMIT_MESSAGE}}"), "skip ci") == false'
           masterBranch: '"${{CF_BRANCH}}" == "master"'
-
   composition_step:
       description: Attempting to run as part of composition.
       type: composition
