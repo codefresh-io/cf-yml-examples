@@ -7,7 +7,6 @@ steps:
     image-name: codefreshio/yaml-example
     dockerfile: Dockerfile
     tag: ${{CF_BRANCH}}
-    title:sd
     when:
      branch:
         only:
@@ -19,6 +18,8 @@ steps:
     image: node:latest
     working-directory: ${{initial-clone}}
     commands:
+        - >- awerty dfgdfgdfgdf
+          sdfsdfsdf
         - npm -v
     when:
       condition:
