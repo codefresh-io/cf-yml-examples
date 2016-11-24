@@ -8,14 +8,14 @@ steps:
 
     check_env_file:
       image: node:latest
-      working_directory: ${{initial-clone}}
+      working_directory: ${{main_clone}}
       commands:
         - pwd
         - ls .
 
     check_env_file_:
       type: composition
-      working_directory: ${{initial-clone}}
+      working_directory: ${{main_clone}}
       composition:
         version: '2'
         services:
@@ -32,7 +32,7 @@ steps:
           test:
             image: ${{build_step}}
             command: bash -c 'echo test:$MYSQL_ROOT_PASSWORD'
-            env_file: /usr/src/app/mysql.env
+            env_file: /codefresh/volume/cf-yml-examples/mysql.env
 
 
 #    unit_test:
