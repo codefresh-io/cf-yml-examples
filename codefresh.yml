@@ -6,6 +6,12 @@ steps:
       dockerfile: Dockerfile
       tag: ${{CF_BRANCH}}
 
+    check-env-file:
+      image: node:latest
+      working-directory: ${{initial-clone}}
+      commands:
+        - pwd
+        - ls .
 
     unit-test:
       type: composition
@@ -17,11 +23,13 @@ steps:
               image: mysql:latest
               ports:
                 - 3306
-              environment:
-                MYSQL_ROOT_PASSWORD: admin
-                MYSQL_USER: my_user
-                MYSQL_PASSWORD: admin
-                MYSQL_DATABASE: nodejs
+              env_file: /codefresh/volume/cf-yml-examples/mysql.env
+
+#              environment:
+#                MYSQL_ROOT_PASSWORD: admin
+#                MYSQL_USER: my_user
+#                MYSQL_PASSWORD: admin
+#                MYSQL_DATABASE: nodejs
       composition-candidates:
           test:
             image: ${{build-step}}
