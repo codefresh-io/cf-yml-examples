@@ -15,13 +15,13 @@ steps:
           image: ${{build-step}}
           command: bash -c "ls -l && cd /codefresh && ls -l && echo test:$MYSQL_ROOT_PASSWORD"
 #          env_file: /codefresh/volume/cf-yml-examples/mysql.env
-        volumes:
-          ${{CF_VOLUME}}:
-            external: true
+#        volumes:
+#          ${{CF_VOLUME}}:
+#            external: true
       composition-candidates:
         test:
           image: ${{build-step}}
-          command: echo hello
+          command: echo test:$MYSQL_ROOT_PASSWORD
           env_file: /codefresh/volume/cf-yml-examples/mysql.env
 
 
