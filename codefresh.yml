@@ -4,7 +4,7 @@ steps:
 #  build_prj1:
 #    type: build
 #    image_name: qwerty
-#    fail-fast: true
+#    fail_fast: true
 #
 #  build_prj:
 #      type: build
@@ -22,7 +22,7 @@ steps:
 
   freestyle_step:
       image: node:latest
-      working-directory: ${{initial-clone}}
+      working_directory: ${{main_clone}}
       commands:
       - test
       environments:
@@ -42,7 +42,7 @@ steps:
                 - mongo
             mongo:
               image: mongo
-        composition-candidates:
+         composition_candidates:
           main:
             image: nhoag/curl
             command: bash -c "sleep 20 && curl http://app:5000/" | echo 'works'
@@ -57,7 +57,7 @@ steps:
       type: push
       candidate: ${{build_prj}}
       tag: ${{CF_BRANCH}}
-      fail-fast: false
+      fail_fast: false
       when:
         branch:
           ignore: [master, develop]
