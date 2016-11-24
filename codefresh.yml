@@ -4,7 +4,9 @@ steps:
   build_prj:
     type: build
     description: UC - build step
+
     image-name: codefreshio/yaml-example
+
     dockerfile: Dockerfile
     tag: ${{CF_BRANCH}}
     when:
@@ -28,6 +30,7 @@ steps:
           name: "'${{CF_BRANCH}}' == 'condition-step'"
           noSkipCiInCommitMessage: 'includes(lower("${{CF_COMMIT_MESSAGE}}"), "skip ci") == false'
           masterBranch: '"${{CF_BRANCH}}" == "master"'
+
   composition_step:
       description: Attempting to run as part of composition.
       type: composition
