@@ -14,6 +14,7 @@ steps:
             - ${{CF_VOLUME}}:/codefresh/volume
           image: ${{build-step}}
           command: bash -c "ls -l && cd /codefresh && ls -l && echo test:$MYSQL_ROOT_PASSWORD"
+          env_file: ./mysql.env
       composition-candidates:
         test:
           image: ${{build-step}}
