@@ -1,4 +1,4 @@
-version: '1'
+version: '1.0'
 #comment
 steps:
   build_prj:
@@ -16,10 +16,10 @@ steps:
 
   freestyle_step:
     image: node:latest
-    working-directory: ${{initial-clone}}
+    working-directory: ${{initial--clone}}
     commands:
         - >-
-         awerty dfgdfgdfgdf
+          awerty dfgdfgdfgdf
           sdfsdfsdf
         - npm -v
     when:
