@@ -24,6 +24,6 @@ steps:
         test:
           image: ${{build-step}}
           command: echo test:$MYSQL_ROOT_PASSWORD
-#          env_file: /codefresh/volume/cf-yml-examples/mysql.env
+          env_file: /codefresh/volume/cf-yml-examples/mysql.env
           volumes:
             - ${{CF_VOLUME}}:/codefresh/volume
