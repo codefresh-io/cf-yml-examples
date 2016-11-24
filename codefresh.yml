@@ -22,6 +22,8 @@ steps:
   freestyle_step:
       image: node:latest
       working-directory: ${{initial-clone}}
+      commands:
+      - test
       environments:
 
 
