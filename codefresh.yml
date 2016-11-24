@@ -15,8 +15,8 @@ steps:
             volumes:
               - ${{CF_VOLUME}}:/codefresh/volume
             image: ${{build-step}}
-            command: bash -c "ls -l && cd /codefresh && ls -l && echo test:$MYSQL_ROOT_PASSWORD"
-            env_file: /codefresh/volume/cf-yml-examples/mysql.env
+            command: bash -c "cd /codefresh && ls -l && echo test:$MYSQL_ROOT_PASSWORD"
+#            env_file: /codefresh/volume/cf-yml-examples/mysql.env
         volumes:
           ${{CF_VOLUME}}:
             external: true
@@ -24,33 +24,6 @@ steps:
         test:
           image: ${{build-step}}
           command: echo test:$MYSQL_ROOT_PASSWORD
-          env_file: /codefresh/volume/cf-yml-examples/mysql.env
+#          env_file: /codefresh/volume/cf-yml-examples/mysql.env
           volumes:
             - ${{CF_VOLUME}}:/codefresh/volume
-
-
-#    check_env_file_:
-#      type: composition
-#      working_directory: ${{main_clone}}
-#      composition:
-#        version: '2'
-#        services:
-#          db:
-#            image: mysql:latest
-#            volumes:
-#              - ${{CF_VOLUME}}:/codefresh/volume
-#            ports:
-#              - 3306
-#            environment:
-#              MYSQL_ROOT_PASSWORD: admin
-#              MYSQL_USER: my_user
-#              MYSQL_PASSWORD: admin
-#              MYSQL_DATABASE: nodejs
-#        volumes:
-#          ${{CF_VOLUME}}:
-#            external: true
-#      composition_candidates:
-#          test:
-#            image: node:latest
-#            command: bash -c 'ls -l && cd /codefresh && ls -l && echo test:$MYSQL_ROOT_PASSWORD'
-##            env_file: /codefresh/volume/cf-yml-examples/mysql.env
