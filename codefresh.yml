@@ -15,4 +15,4 @@ steps:
     fail_fast: false
     commands:
       - echo list of files
-      - ls -l
+      - ls -l /codefresh/volume/
