@@ -9,7 +9,6 @@ steps:
     dockerfile: Dockerfile
     tag: ${{CF_BRANCH}}
 
-
   freestyle_step:
     image: ${{build_prj}}
     working_directory: ${{main_clone}}
@@ -17,12 +16,3 @@ steps:
     commands:
       - echo list of files
       - ls -l
-      - echo copying file to volume
-      - cp artifact/artifact.example /codefresh/volume/
-
-  validate:
-     image: ${{build_prj}}
-     working_directory: ${{main_clone}}
-     commands:
-        - pwd
-        - ls -l /codefresh/volume/
