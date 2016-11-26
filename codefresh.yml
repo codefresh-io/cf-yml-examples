@@ -18,6 +18,9 @@ steps:
             - ${{CF_VOLUME}}:/codefresh/volume
           image: ${{build-step}}
           command: bash -c "echo hello > /codefresh/volume/myfile.txt"
+      volumes:
+        ${{CF_VOLUME}}:
+          external: true
     composition-candidates:
       test:
         image: ${{build-step}}
