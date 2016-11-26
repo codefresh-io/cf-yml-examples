@@ -11,11 +11,13 @@ steps:
   step-file-generation:
     type: composition
     composition:
-      service-name:
-        volumes:
-          - ${{CF_VOLUME}}:/codefresh/volume
-        image: ${{build-step}}
-        command: bash -c "echo hello > /codefresh/volume/myfile.txt"
+      version: '2'
+      services:
+        service-name:
+          volumes:
+            - ${{CF_VOLUME}}:/codefresh/volume
+          image: ${{build-step}}
+          command: bash -c "echo hello > /codefresh/volume/myfile.txt"
     composition-candidates:
       test:
         image: ${{build-step}}
