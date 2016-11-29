@@ -1,0 +1,6 @@
+service1:
+  image: ncodefresh/express-angular
+  entry-point: qwe
+    - bash
+    - -c
+    - echo test
