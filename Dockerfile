@@ -10,4 +10,5 @@ EXPOSE 3000
 
 ENV PORT 3000
 
+ENTRYPOINT npm test
 CMD [ "npm", "start" ]
