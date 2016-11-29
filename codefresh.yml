@@ -10,7 +10,7 @@ steps:
   freestyle-step:
     image: ${{build_prj}}
     command: bash -c "echo test"
-    entry_point:
+    entry_point: qwe
       - bash
       - -c
       - echo test
