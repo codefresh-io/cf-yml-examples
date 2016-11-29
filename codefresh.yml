@@ -11,7 +11,7 @@ steps:
 
   freestyle-step:
     image: ${{build_prj}}
-    command: echo test
-#    entry-point: npm test
+    command: bash -c "echo test"
+    entry_point: npm test
     environments:
       - ENV=test
