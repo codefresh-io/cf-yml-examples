@@ -3,7 +3,8 @@
   "description": "Hello World test app",
   "version": "0.0.1",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "tets": "echo test"
   },
   "private": true,
   "dependencies": {
