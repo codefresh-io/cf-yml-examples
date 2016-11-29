@@ -1,7 +1,5 @@
 version: '1.0'
-
 steps:
-
   build_prj:
     type: build
     description: Build an Image with the Dockerfile in Root Directory
@@ -11,7 +9,7 @@ steps:
 
   freestyle-step:
     image: ${{build_prj}}
-    command: bash -c "echo test"
+#    command: bash -c "echo test"
     entry_point: npm test
     environments:
       - ENV=test
