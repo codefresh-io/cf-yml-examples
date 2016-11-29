@@ -13,6 +13,6 @@ steps:
     entry_point:
       - bash
       - -c
-      - npm start
+      - npm test
     environments:
       - ENV=test
