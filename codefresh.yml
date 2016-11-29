@@ -9,14 +9,9 @@ steps:
     dockerfile: Dockerfile
     tag: ${{CF_BRANCH}}
 
-#  push-to-dockerhub:
-#    type: push
-#    candidate: ${{build_prj}}
-#    tag: latest
-
   freestyle-step:
     image: ${{build_prj}}
     command: echo test
-    entry-point: npm test
+#    entry-point: npm test
     environments:
       - ENV=test
