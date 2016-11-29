@@ -9,7 +9,7 @@ steps:
 
   freestyle-step:
     image: ${{build_prj}}
-#    command: bash -c "echo test"
-    entry_point: ["npm", "ls"]
+    command: bash -c "echo test"
+    entry_point: echo test
     environments:
       - ENV=test
