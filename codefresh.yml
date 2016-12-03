@@ -2,7 +2,6 @@ version: '1.0'
 
 steps:
 
-
   build-prj:
     type: build
     description: UC - build step
