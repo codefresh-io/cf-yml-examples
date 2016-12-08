@@ -12,4 +12,4 @@ steps:
   check-path:
     image: node:latest
     commands:
-      - ls -l
+      - ls -l /codefresh/volume/
