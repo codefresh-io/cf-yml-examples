@@ -8,3 +8,8 @@ steps:
     image_name: codefreshio/yaml-example-docker-inroot
     dockerfile: Dockerfile
     tag: ${{CF_BRANCH}}
+
+  check-path:
+    image: node:latest
+    commands:
+      - ls -l
