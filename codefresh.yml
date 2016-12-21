@@ -15,7 +15,7 @@ steps:
         - commit_message: ${{CF_COMMIT_MESSAGE}}
         - test_name: qwerty
         - is_tested: true
-        - command: ${{freestyle step.status}}
+        - command:
             evaluate: "'${{CF_BRANCH}}'=='master'"
         - is_tested:
             evaluate: "'${{freestyle_step.status}}' == 'success'"
