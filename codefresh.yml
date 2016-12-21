@@ -4,10 +4,9 @@ steps:
     type: build
     image_name: qwerty1
     fail-fast: true
-    on_success:
-      metadata:
+    metadata:
         set:
-          - qa: pending
+          - qa: pending ффффффффффффsdsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
           - commit_message: ${{CF_COMMIT_MESSAGE}}
           - is_tested:
               evaluate: "'${{unit_test_step.status}}' == 'success'"
