@@ -4,27 +4,28 @@ steps:
     type: build
     image_name: qwerty1
     fail-fast: true
-    metadata:
+    on_success:
+      metadata:
         set:
           - qa: pending
           - commit_message: ${{CF_COMMIT_MESSAGE}}
           - is_tested:
               evaluate: "'${{unit_test_step.status}}' == 'success'"
 
-  build_prj2:
-     type: build
-     image_name: qwerty2
-     fail-fast: false
-     metadata:
-         set:
-           - qa: pending
-           - tester: nikolai
-           - commiter: sfik
-           - is_tested: true
-           - commit_message: qwerty
-           - commit_message: ${{CF_COMMIT_MESSAGE}}
-           - is_tested:
-               evaluate: "'${{unit_test_step.status}}' == 'success'"
+#  build_prj2:
+#     type: build
+#     image_name: qwerty2
+#     fail-fast: false
+#     metadata:
+#         set:
+#           - qa: pending
+#           - tester: nikolai
+#           - commiter: sfik
+#           - is_tested: true
+#           - commit_message: qwerty
+#           - commit_message: ${{CF_COMMIT_MESSAGE}}
+#           - is_tested:
+#               evaluate: "'${{unit_test_step.status}}' == 'success'"
 
 #  build_prj:
 #      type: build
