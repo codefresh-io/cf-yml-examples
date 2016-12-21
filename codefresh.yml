@@ -1,6 +1,6 @@
 version: '1.0'
 steps:
-  freestyle step:
+  freestyle_step:
     image: node:latest
     working_directory: ${{initial-clone}}
     commands:
@@ -19,7 +19,7 @@ steps:
         - command: ${{freestyle step.status}}
         - qa2: pending qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
         - is_tested:
-            evaluate: "'${{freestyle step.status}}' == 'success'"
+            evaluate: "'${{freestyle_step.status}}' == 'success'"
         - qa3: pending qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
         - qa4: pending qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
         - qa5: pending qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
