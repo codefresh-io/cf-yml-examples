@@ -18,7 +18,7 @@ steps:
      fail-fast: false
      metadata:
          set:
-           - qa: [pending, 123aasdsdd, asdddddddddddddddddddddddddddddddddddddddddddddddddddddddddd, ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd]
+           - qa: pending
            - commit_message: ${{CF_COMMIT_MESSAGE}}
            - is_tested:
                evaluate: "'${{unit_test_step.status}}' == 'success'"
