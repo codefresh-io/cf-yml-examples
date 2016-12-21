@@ -15,7 +15,7 @@ steps:
   build_prj2:
      type: build
      image_name: qwerty22
-     fail-fast: true
+     fail-fast: false
      metadata:
          set:
            - qa: [pending, 123aasdsdd, asdddddddddddddddddddddddddddddddddddddddddddddddddddddddddd, ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd]
