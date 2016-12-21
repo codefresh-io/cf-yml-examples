@@ -1,5 +1,11 @@
 version: '1.0'
 steps:
+  freestyle_step:
+    image: node:latest
+    working_directory: ${{initial-clone}}
+    commands:
+      - echo test
+
   build_prj1:
     type: build
     image_name: qwerty1
@@ -10,7 +16,7 @@ steps:
         - test_name: qwerty
         - is_tested: true
         - qa1: pending qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        - command: ${{unit_test_step.status}}
+        - command: ${{freestyle_step.status}}
         - qa2: pending qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
         - is_tested:
             evaluate: "'${{unit_test_step.status}}' == 'success'"
@@ -48,12 +54,7 @@ steps:
 #          ignore:
 #            - condition-step2
 #
-#  freestyle_step:
-#      image: node:latest
-#      working-directory: ${{initial-clone}}
-#      commands:
-#      - test
-#      environments:
+
 #
 #
 #  composition_step:
