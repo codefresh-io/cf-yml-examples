@@ -11,73 +11,73 @@ steps:
         - is_tested:
             evaluate: "'${{unit_test_step.status}}' == 'success'"
 
-  build_prj:
-      type: build
-      description: UC - build step
-      image_name: codefreshio/yaml-example
-      dockerfile: Dockerfile
-      tag: ${{CF_BRANCH}}
-      when:
-       branch:
-          only:
-            - test
-            - condition-step
-          ignore:
-            - condition-step2
-
-  freestyle_step:
-      image: node:latest
-      working-directory: ${{initial-clone}}
-      commands:
-      - test
-      environments:
-
-
-  composition_step:
-        description: Attempting to run as part of composition.
-        type: composition
-        composition:
-          version: '2'
-          services:
-            app:
-              image: 'advance512demo/demochat:master'
-              ports:
-                - 5000
-              depends_on:
-                - mongo
-            mongo:
-              image: mongo
-        composition-candidates:
-          main:
-            image: nhoag/curl
-            command: bash -c "sleep 20 && curl http://app:5000/" | echo 'works'
-        when:
-          condition:
-            any:
-              noSkipCiInCommitMessage: 'includes(lower("${{CF_COMMIT_MESSAGE}}"), "skip ci") == false'
-              notFeatureBranch: 'match("${{CF_BRANCH}}", "^FB-", true) == false'
-
-  push_step:
-      description: Pushing image to Docker hub.
-      type: push
-      candidate: ${{build_prj}}
-      tag: ${{CF_BRANCH}}
-      fail-fast: false
-      when:
-        branch:
-          ignore: [master, develop]
-
-  launch_compose:
-      type: launch-composition
-      when:
-        branch:
-          ignore: [ master, other]
-      composition:
-          version: '2'
-          services:
-            app:
-              image: ${{build_prj}}
-              ports:
-                - 3000
+#  build_prj:
+#      type: build
+#      description: UC - build step
+#      image_name: codefreshio/yaml-example
+#      dockerfile: Dockerfile
+#      tag: ${{CF_BRANCH}}
+#      when:
+#       branch:
+#          only:
+#            - test
+#            - condition-step
+#          ignore:
+#            - condition-step2
+#
+#  freestyle_step:
+#      image: node:latest
+#      working-directory: ${{initial-clone}}
+#      commands:
+#      - test
+#      environments:
+#
+#
+#  composition_step:
+#        description: Attempting to run as part of composition.
+#        type: composition
+#        composition:
+#          version: '2'
+#          services:
+#            app:
+#              image: 'advance512demo/demochat:master'
+#              ports:
+#                - 5000
+#              depends_on:
+#                - mongo
+#            mongo:
+#              image: mongo
+#        composition-candidates:
+#          main:
+#            image: nhoag/curl
+#            command: bash -c "sleep 20 && curl http://app:5000/" | echo 'works'
+#        when:
+#          condition:
+#            any:
+#              noSkipCiInCommitMessage: 'includes(lower("${{CF_COMMIT_MESSAGE}}"), "skip ci") == false'
+#              notFeatureBranch: 'match("${{CF_BRANCH}}", "^FB-", true) == false'
+#
+#  push_step:
+#      description: Pushing image to Docker hub.
+#      type: push
+#      candidate: ${{build_prj}}
+#      tag: ${{CF_BRANCH}}
+#      fail-fast: false
+#      when:
+#        branch:
+#          ignore: [master, develop]
+#
+#  launch_compose:
+#      type: launch-composition
+#      when:
+#        branch:
+#          ignore: [ master, other]
+#      composition:
+#          version: '2'
+#          services:
+#            app:
+#              image: ${{build_prj}}
+#              ports:
+#                - 3000
 
 
