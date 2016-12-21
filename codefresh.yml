@@ -16,9 +16,8 @@ steps:
         - test_name: qwerty
         - is_tested: true
         - command:
-            evaluate: "'${{CF_BRANCH}}'=='master'"
+            evaluate: "'${{CF_BRANCH}}'=='condition-step'"
         - is_tested:
-            evaluate: "'${{freestyle_step.status}}' == 'success'"
 
 #  build_prj2:
 #     type: build
