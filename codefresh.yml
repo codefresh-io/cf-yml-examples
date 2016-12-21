@@ -4,13 +4,15 @@ steps:
     type: build
     image_name: qwerty1
     fail-fast: true
-    on_success:
-      metadata:
-        set:
-          - qa: pending
-          - commit_message: ${{CF_COMMIT_MESSAGE}}
-          - is_tested:
-              evaluate: "'${{unit_test_step.status}}' == 'success'"
+    metadata:
+      set:
+        - qa: pending
+        - commit_message: ${{CF_COMMIT_MESSAGE}}
+        - test name: qwerty
+        - is_tested: true
+        - command: ${{unit_test_step.status}}
+        - is_tested:
+            evaluate: "'${{unit_test_step.status}}' == 'success'"
 
 #  build_prj2:
 #     type: build
