@@ -64,13 +64,13 @@ steps:
     when:
       branch:
         ignore: [master, develop]
-    metadata:
-      set:
-        - commit_message: ${{CF_COMMIT_MESSAGE}}
-        - test_name: qwerty
-        - is_tested: true
-        - command:
-            evaluate: "'${{CF_BRANCH}}'=='condition-step'"
+    on-finish:
+      metadata:
+        set:
+          - commit_message: ${{CF_COMMIT_MESSAGE}}
+          - is_tested: true
+          - command:
+              evaluate: "'${{CF_BRANCH}}'=='condition-step'"
 
   launch_compose:
     type: launch-composition
