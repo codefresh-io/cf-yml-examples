@@ -16,13 +16,14 @@ steps:
     image: node:latest
     commands:
       - echo test
-    metadata:
-      set:
-        - commit_message: ${{CF_COMMIT_MESSAGE}}
-        - test_name: qwerty
-        - is_tested: false
-        - command:
-            evaluate: "'${{CF_BRANCH}}'=='master'"
+    on_finish:
+      metadata:
+        set:
+          - commit_message: ${{CF_COMMIT_MESSAGE}}
+          - test_name: qwerty
+          - is_tested: false
+          - command:
+              evaluate: "'${{CF_BRANCH}}'=='master'"
 
 #  composition_step:
 #    description: Attempting to run as part of composition.
