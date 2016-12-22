@@ -64,7 +64,7 @@ steps:
     when:
       branch:
         ignore: [master, develop]
-    on-finish:
+    on_finish:
       metadata:
         set:
           - commit_message: ${{CF_COMMIT_MESSAGE}}
