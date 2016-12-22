@@ -55,21 +55,15 @@ steps:
         - command:
             evaluate: "'${{CF_BRANCH}}'=='condition-step'"
 
-  push_step:
-    description: Pushing image to Docker hub.
-    type: push
-    candidate: ${{build_prj}}
-    tag: ${{CF_BRANCH}}
-    fail-fast: false
-    when:
-      branch:
-        ignore: [master, develop]
-    on_finish:
-      metadata:
-        set:
-          - commit_message:
-              - ${{CF_COMMIT_MESSAGE}}
-              - test
+#  push_step:
+#    description: Pushing image to Docker hub.
+#    type: push
+#    candidate: ${{build_prj}}
+#    tag: ${{CF_BRANCH}}
+#    fail-fast: false
+#    when:
+#      branch:
+#        ignore: [master, develop]
 
   launch_compose:
     type: launch-composition
