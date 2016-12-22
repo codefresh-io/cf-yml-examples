@@ -67,10 +67,9 @@ steps:
     on_finish:
       metadata:
         set:
-          - commit_message: ${{CF_COMMIT_MESSAGE}}
-          - is_tested: true
-          - command:
-              evaluate: "'${{CF_BRANCH}}'=='condition-step'"
+          - commit_message:
+              - ${{CF_COMMIT_MESSAGE}}
+              - test
 
   launch_compose:
     type: launch-composition
