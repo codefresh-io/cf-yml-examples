@@ -11,7 +11,8 @@ steps:
         - is_tested: true
         - command:
             evaluate: "'${{CF_BRANCH}}'=='condition-step'"
-        - is_tested:
+        - is_tested: [true, false]
+
 
 #  build_prj2:
 #     type: build
