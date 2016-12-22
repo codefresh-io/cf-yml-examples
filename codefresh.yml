@@ -12,84 +12,84 @@ steps:
         - command:
             evaluate: "'${{CF_BRANCH}}'=='condition-step'"
 
+  freestyle_step:
+    image: node:latest
+    commands:
+      - echo test
+    metadata:
+      set:
+        - commit_message: ${{CF_COMMIT_MESSAGE}}
+        - test_name: qwerty
+        - is_tested: true
+        - command:
+            evaluate: "'${{CF_BRANCH}}'=='condition-step'"
 
-#  build_prj2:
-#     type: build
-#     image_name: qwerty2
-#     fail-fast: false
-#     metadata:
-#         set:
-#           - qa: pending
-#           - tester: nikolai
-#           - commiter: sfik
-#           - is_tested: true
-#           - commit_message: qwerty
-#           - commit_message: ${{CF_COMMIT_MESSAGE}}
-#           - is_tested:
-#               evaluate: "'${{unit_test_step.status}}' == 'success'"
+  composition_step:
+    description: Attempting to run as part of composition.
+    type: composition
+    composition:
+      version: '2'
+      services:
+        app:
+          image: 'advance512demo/demochat:master'
+          ports:
+            - 5000
+          depends_on:
+            - mongo
+        mongo:
+          image: mongo
+    composition-candidates:
+      main:
+        image: nhoag/curl
+        command: bash -c "sleep 20 && curl http://app:5000/" | echo 'works'
+    when:
+      condition:
+        any:
+          noSkipCiInCommitMessage: 'includes(lower("${{CF_COMMIT_MESSAGE}}"), "skip ci") == false'
+          notFeatureBranch: 'match("${{CF_BRANCH}}", "^FB-", true) == false'
+    metadata:
+      set:
+        - commit_message: ${{CF_COMMIT_MESSAGE}}
+        - test_name: qwerty
+        - is_tested: true
+        - command:
+            evaluate: "'${{CF_BRANCH}}'=='condition-step'"
 
-#  build_prj:
-#      type: build
-#      description: UC - build step
-#      image_name: codefreshio/yaml-example
-#      dockerfile: Dockerfile
-#      tag: ${{CF_BRANCH}}
-#      when:
-#       branch:
-#          only:
-#            - test
-#            - condition-step
-#          ignore:
-#            - condition-step2
-#
+  push_step:
+    description: Pushing image to Docker hub.
+    type: push
+    candidate: ${{build_prj}}
+    tag: ${{CF_BRANCH}}
+    fail-fast: false
+    when:
+      branch:
+        ignore: [master, develop]
+    metadata:
+      set:
+        - commit_message: ${{CF_COMMIT_MESSAGE}}
+        - test_name: qwerty
+        - is_tested: true
+        - command:
+            evaluate: "'${{CF_BRANCH}}'=='condition-step'"
 
-#
-#
-#  composition_step:
-#        description: Attempting to run as part of composition.
-#        type: composition
-#        composition:
-#          version: '2'
-#          services:
-#            app:
-#              image: 'advance512demo/demochat:master'
-#              ports:
-#                - 5000
-#              depends_on:
-#                - mongo
-#            mongo:
-#              image: mongo
-#        composition-candidates:
-#          main:
-#            image: nhoag/curl
-#            command: bash -c "sleep 20 && curl http://app:5000/" | echo 'works'
-#        when:
-#          condition:
-#            any:
-#              noSkipCiInCommitMessage: 'includes(lower("${{CF_COMMIT_MESSAGE}}"), "skip ci") == false'
-#              notFeatureBranch: 'match("${{CF_BRANCH}}", "^FB-", true) == false'
-
-#  push_step:
-#      description: Pushing image to Docker hub.
-#      type: push
-#      candidate: ${{build_prj}}
-#      tag: ${{CF_BRANCH}}
-#      fail-fast: false
-#      when:
-#        branch:
-#          ignore: [master, develop]
-#
-#  launch_compose:
-#      type: launch-composition
-#      when:
-#        branch:
-#          ignore: [ master, other]
-#      composition:
-#          version: '2'
-#          services:
-#            app:
-#              image: ${{build_prj}}
-#              ports:
-#                - 3000
+  launch_compose:
+    type: launch-composition
+    when:
+      branch:
+        ignore: [ master, other]
+    composition:
+        version: '2'
+        services:
+          app:
+            image: ${{build_prj}}
+            ports:
+              - 3000
+    metadata:
+      set:
+        - commit_message: ${{CF_COMMIT_MESSAGE}}
+        - test_name: qwerty
+        - is_tested: true
+        - command:
+            evaluate: "'${{CF_BRANCH}}'=='condition-step'"
 
 
