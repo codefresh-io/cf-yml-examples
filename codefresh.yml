@@ -1,6 +1,6 @@
 version: '1.0'
 steps:
-  build_prj1:
+  build_prj:
     type: build
     image_name: qwerty1
     fail-fast: true
@@ -14,7 +14,7 @@ steps:
   push_step:
     description: Pushing image to Docker hub.
     type: push
-    candidate: ${{build_prj1}}
+    candidate: ${{build_prj}}
     tag: ${{CF_BRANCH}}
     fail-fast: false
     on_success:
