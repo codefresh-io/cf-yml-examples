@@ -1,6 +1,6 @@
 version: '1.0'
 steps:
-  build_prj:
+  build prj:
     type: build
     image_name: qwerty1
     fail-fast: true
