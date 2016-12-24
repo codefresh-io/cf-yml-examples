@@ -1,29 +1,31 @@
 version: '1.0'
 steps:
-  build_prj1:
+  build_prj:
     type: build
     image_name: qwerty1
     fail-fast: true
-#    metadata:
-#      set:
-#        - commit_message: ${{CF_COMMIT_MESSAGE}}
-#        - test_name: qwerty
-#        - is_tested: true
-#        - command:
-#            evaluate: "'${{CF_BRANCH}}'=='condition-step'"
-
-  freestyle_step:
-    image: node:latest
-    commands:
-      - echo test
     on_finish:
       metadata:
         set:
           - commit_message: ${{CF_COMMIT_MESSAGE}}
           - test_name: qwerty
-          - is_tested: false
+          - is_tested: true
           - command:
-              evaluate: "'${{CF_BRANCH}}'=='master'"
+              evaluate: "'${{CF_BRANCH}}'=='condition-step'"
+
+#  freestyle_step:
+#    image: node:latest
+#    commands:
+#      - echo test
+#    on_finish:
+#      metadata:
+#        set:
+#          - ${{build_prj.image}}
+#          - commit_message: ${{CF_COMMIT_MESSAGE}}
+#          - test_name: qwerty
+#          - is_tested: false
+#          - command:
+#              evaluate: "'${{CF_BRANCH}}'=='master'"
 
 #  composition_step:
 #    description: Attempting to run as part of composition.
