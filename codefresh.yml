@@ -14,7 +14,7 @@ steps:
   push_step:
     description: Pushing image to Docker hub.
     type: push
-    candidate: ${{build_prj}}
+    candidate: ${{build_prj1}}
     tag: ${{CF_BRANCH}}
     fail-fast: false
     on_success:
