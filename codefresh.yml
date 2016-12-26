@@ -14,21 +14,6 @@ steps:
            - command:
                evaluate: "'${{CF_BRANCH}}'=='condition-step'"
 
-  freestyle_step:
-   image: node:latest
-   commands:
-     - echo test
-   on_success:
-     metadata:
-       set:
-         - ${{build_prj.imageId}}:
-           - is_unit_test: true
-   on_fail:
-     metadata:
-       set:
-         - ${{build_prj.imageId}}:
-           - is_unit_test: false
-
 #  push_step:
 #    description: Pushing image to Docker hub.
 #    type: push
