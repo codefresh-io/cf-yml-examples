@@ -1,33 +1,35 @@
 version: '1.0'
 steps:
   build_prj:
-    type: build
-    image_name: qwerty1
-    fail-fast: true
-    metadata:
-      set:
-          - commit_message: ${{CF_COMMIT_MESSAGE}}
-          - test_name: qwerty
-          - is_tested: true
-          - command:
-              evaluate: "'${{CF_BRANCH}}'=='condition-step'"
+     type: build
+     image_name: qwerty1
+     fail-fast: true
+     on_finish:
+       metadata:
+         set:
+           - ${{build_prj.imageId}}:
+             - commit_message: ${{CF_COMMIT_MESSAGE}}
+             - test_name: qwerty
+             - is_tested: true
+             - command:
+                 evaluate: "'${{CF_BRANCH}}'=='condition-step'"
 
-  push_step:
-    description: Pushing image to Docker hub.
-    type: push
-    candidate: ${{build_prj}}
-    tag: ${{CF_BRANCH}}
-    fail-fast: false
-    on_success:
-      metadata:
-        set:
-          - ${{build_prj.imageId}}:
-            - push_step_status: true
-    on_fail:
-      metadata:
-        set:
-          - ${{build_prj.imageId}}:
-            - push_step_status: false
+#  push_step:
+#    description: Pushing image to Docker hub.
+#    type: push
+#    candidate: ${{build_prj}}
+#    tag: ${{CF_BRANCH}}
+#    fail-fast: false
+#    on_success:
+#      metadata:
+#        set:
+#          - ${{build_prj.imageId}}:
+#            - push_step_status: true
+#    on_fail:
+#      metadata:
+#        set:
+#          - ${{build_prj.imageId}}:
+#            - push_step_status: false
 
 #  freestyle_step:
 #    image: node:latest
