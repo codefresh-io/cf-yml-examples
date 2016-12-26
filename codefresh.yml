@@ -1,6 +1,6 @@
 version: '1.0'
 steps:
-  build_prj1:
+  build_prj:
    type: build
    image_name: qwerty1
    fail-fast: true
@@ -12,20 +12,22 @@ steps:
          - command:
              evaluate: "'${{CF_BRANCH}}'=='condition-step'"
 
-  freestyle_step:
-   image: node:latest
-   commands:
-     - echo test
+  push_step:
+   description: Pushing image to Docker hub.
+   type: push
+   candidate: ${{build_prj}}
+   tag: ${{CF_BRANCH}}
+   fail-fast: false
    on_success:
      metadata:
        set:
          - ${{build_prj.imageId}}:
-           - is_unit_test: true
+           - push_step_status: true
    on_fail:
      metadata:
        set:
          - ${{build_prj.imageId}}:
-           - is_unit_test: false
+           - push_step_status: false
 
 #  push_step:
 #    description: Pushing image to Docker hub.
