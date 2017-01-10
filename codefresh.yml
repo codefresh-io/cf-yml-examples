@@ -17,6 +17,11 @@ steps:
             image: ${{build-step}}
             command: bash -c "ls -l /codefresh/volume/cf-yml-examples/ && echo test:$MYSQL_ROOT_PASSWORD"
             env_file: /codefresh/volume/cf-yml-examples/mysql.env
+            environment:
+              - TEST=${{TEST}}
+              - TEST=${{TEST2}}
+              - TEST1=${{TEST1}}
+              - TEST=qwerty
         volumes:
           ${{CF_VOLUME}}:
             external: true
