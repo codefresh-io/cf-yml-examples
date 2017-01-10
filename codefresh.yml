@@ -12,6 +12,7 @@ steps:
       image: node:latest
       environment:
         - TEST=test
+        - TEST1=${{TEST1}}
       commands:
         - node -v
         - echo custom-env-1:$TEST
