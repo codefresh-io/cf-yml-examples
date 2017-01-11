@@ -10,7 +10,7 @@ steps:
 
   inline-composition:
       type: launch-composition
-      environmentName: 'env-composition-name'
+      environmentName: ${{CF_SHORT_REVISION}}
       composition:
         version: '2'
         services:
