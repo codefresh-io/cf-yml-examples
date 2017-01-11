@@ -15,6 +15,6 @@ steps:
         version: '2'
         services:
           service-name:
-            image: ${{build-step}}
+            image: ${{build-step1}}
             ports:
              - 3000
