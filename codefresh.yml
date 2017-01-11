@@ -11,5 +11,5 @@ steps:
 
   push-to-docker-registry:
     type: push
-    candidate: ${{build-prj}}
+    candidate: ${{build-prj1}}
     tag: ${{CF_BRANCH}}
