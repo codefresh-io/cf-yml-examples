@@ -1,5 +1,5 @@
 ## Push to AWS Registry
-
+[![Codefresh build status]( {{BADGE_LINK}} )]( {{URL_TO_PIPELINE}} )
 You can integrate Codefresh with AWS as your Docker registry.
 If you don't have AWS_USERNAME, AWS_PASSWORD and AWS_REGISTRY_URL you can get these values using following aws cli command
 
