@@ -1,5 +1,5 @@
 ## Push to AWS Registry
-[![Codefresh build status]( https://g.codefresh.io/api/badges/build?branch=push-to-aws&repoName=cf-yml-examples&repoOwner=codefresh-io&pipelineName=cf-yml examples&accountName=nikolai&type=cf-2 )]( https://g.codefresh.io/repositories/codefresh-io/cf-yml-examples/builds?filter=trigger:build )
+[![Codefresh build status]( https://g.codefresh.io/api/badges/build?branch=push-to-aws&repoName=cf-yml examples&repoOwner=codefresh-io&pipelineName=cf-yml-examples&accountName=nikolai&type=cf-2 )]( https://g.codefresh.io/repositories/codefresh-io/cf-yml-examples/builds?filter=trigger:build )
 You can integrate Codefresh with AWS as your Docker registry.
 If you don't have AWS_USERNAME, AWS_PASSWORD and AWS_REGISTRY_URL you can get these values using following aws cli command
 
