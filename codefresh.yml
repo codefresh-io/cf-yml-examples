@@ -23,11 +23,13 @@ steps:
        set:
          - ${{build_prj.imageId}}:
            - push_step_status: true
+           - CF_QUALITY: true
    on_fail:
      metadata:
        set:
          - ${{build_prj.imageId}}:
            - push_step_status: false
+           - CF_QUALITY: false
 
 #  push_step:
 #    description: Pushing image to Docker hub.
