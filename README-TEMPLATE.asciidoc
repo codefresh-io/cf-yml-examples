@@ -35,7 +35,7 @@ The Build is a simplified abstraction over the Docker build command.
 INSERT BUILD STEP HERE
 ```
 
-Use the `image_name` field to declare the name of the resulting image.
+Use the `image_name` field to declare the name of the resulting image (don't forget to change the image owner name from `codefreshdemo` to your own!).
 
 ### Launching `[Insert this section only where applicable]`
 
