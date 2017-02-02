@@ -37,7 +37,7 @@ INSERT BUILD STEP HERE
 
 Use the `image_name` field to declare the name of the resulting image.
 
-### Building `[Insert this section only where applicable]`
+### Launching `[Insert this section only where applicable]`
 
 This is where it gets real! Let's use Codefresh's https://docs.codefresh.io/docs/steps#section-launch-composition[Launch Composition step] to run our composition within Codefresh!
 
