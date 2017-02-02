@@ -37,6 +37,19 @@ INSERT BUILD STEP HERE
 
 Use the `image_name` field to declare the name of the resulting image.
 
+### Building `[Insert this section only where applicable]`
+
+This is where it gets real! Let's use Codefresh's https://docs.codefresh.io/docs/steps#section-launch-composition[Launch Composition step] to run our composition within Codefresh!
+
+Launching compositions within Codefresh means you have your very own staging area, at a click of a button!
+```
+INSERT COMPOSITION STEP HERE
+```
+
+Using the `composition` field, we direct Codefresh to the location if the `docker-compose` file in our repository.
+
+Once the Launch Composition step has completed successfully, you'll be able to review and share your running composition in the https://docs.codefresh.io/docs/share-environment-with-your-test[Environments page].
+
 Now that we've gotten a grip on the flow, let's get cracking!
 
 ## Using This Example
