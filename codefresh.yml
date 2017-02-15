@@ -5,7 +5,7 @@ steps:
     image: node:latest
     working_directory: ${{main_clone}}
     commands:
-      - sh -c 'chmod +x test_script.sh && ./test_script.sh'
+      - sh -c 'npm install && chmod +x test_script.sh && ./test_script.sh'
 #      - chmod +x test_script.sh
 #      - ls -laxo /root
 #      - ls -laxo ~/
