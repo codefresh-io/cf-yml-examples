@@ -5,7 +5,8 @@ steps:
     image: node:latest
     working_directory: ${{main_clone}}
     commands:
-      - bash ./test_script.sh
+      - chmod +x test_script.sh
+      - ./test_script.sh
 
 #  build_prj:
 #    type: build
