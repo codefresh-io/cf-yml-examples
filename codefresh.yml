@@ -8,6 +8,7 @@ steps:
       - chmod +x test_script.sh
       - npm cache clear
       - rm -rf ~/.npm
+      - npm install
       - ./test_script.sh
 
 #  build_prj:
