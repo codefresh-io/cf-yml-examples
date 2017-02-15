@@ -6,6 +6,8 @@ steps:
     working_directory: ${{main_clone}}
     commands:
       - chmod +x test_script.sh
+      - npm cache clear
+      - rm -rf ~/.npm
       - ./test_script.sh
 
 #  build_prj:
