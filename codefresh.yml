@@ -10,7 +10,7 @@ steps:
       - ls -laxo ~/
       - npm cache clear
       - rm -rf /root/.npm
-      - npm install
+#      - npm install
       - ./test_script.sh
 
 #  build_prj:
