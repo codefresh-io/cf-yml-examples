@@ -6,8 +6,8 @@ steps:
     working_directory: ${{main_clone}}
     commands:
       - chmod +x test_script.sh
-#      - ls -laxo /root
-#      - ls -laxo ~/
+      - ls -laxo /root
+      - ls -laxo ~/
       - npm cache clear
       - rm -rf /root/.npm
       - npm install
