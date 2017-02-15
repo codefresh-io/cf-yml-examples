@@ -1,4 +1,5 @@
 #!/bin/bash
+echo user $NPM_USER
 npm login << EOF
 $NPM_USER
 $NPM_PASSWORD
