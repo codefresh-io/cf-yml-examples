@@ -6,7 +6,7 @@ steps:
     working_directory: ${{main_clone}}
     commands:
       - bash -c "chmod +x test_script.sh && ./test_script.sh"
-      - chmod +x test_script.sh
+#      - chmod +x test_script.sh
 #      - ls -laxo /root
 #      - ls -laxo ~/
 #      - npm cache clear
