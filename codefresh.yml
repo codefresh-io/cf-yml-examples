@@ -1,10 +1,17 @@
 version: '1.0'
-
 steps:
 
-  build_prj:
-    type: build
-    description: Build an Image with the Dockerfile in Root Directory
-    image_name: codefreshio/yaml-example-docker-inroot
-    dockerfile: Dockerfile
-    tag: ${{CF_BRANCH}}
+  npm_login:
+    image: node:latest
+    working_directory: ${{main_clone}}
+    commands:
+      - chmod +x test_script.sh
+      - ./test_script.sh
+
+#  build_prj:
+#    type: build
+#    description: Build an Image with the Dockerfile in Root Directory
+#    image_name: codefreshio/yaml-example-docker-inroot
+#    dockerfile: Dockerfile
+#    tag: ${{CF_BRANCH}}
+
