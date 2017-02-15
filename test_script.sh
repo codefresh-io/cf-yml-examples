@@ -5,6 +5,8 @@ echo user $NPM_USER
 #$NPM_PASSWORD
 #$NPM_EMAIL
 #!
+npm cache clear
+
 npm login << MULTILINE
 $NPM_USER
 $NPM_PASSWORD
