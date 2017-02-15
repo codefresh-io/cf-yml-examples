@@ -5,14 +5,13 @@ steps:
     image: node:latest
     working_directory: ${{main_clone}}
     commands:
-      - sh -c 'npm install && chmod +x test_script.sh && ./test_script.sh'
-#      - chmod +x test_script.sh
+      - chmod +x test_script.sh
 #      - ls -laxo /root
 #      - ls -laxo ~/
-#      - npm cache clear
-#      - rm -rf /root/.npm
-#      - npm install
-#      - ./test_script.sh
+      - npm cache clear
+      - rm -rf /root/.npm
+      - npm install
+      - ./test_script.sh
 
 #  build_prj:
 #    type: build
